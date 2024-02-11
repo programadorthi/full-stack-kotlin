@@ -3,5 +3,7 @@ plugins {
 }
 
 dependencies {
-    implementation(kotlin("gradle-plugin", version = "1.9.22"))
+    implementation(platform("dev.programadorthi.platform:plugins-platform"))
+
+    implementation(kotlin("gradle-plugin"))
 }
