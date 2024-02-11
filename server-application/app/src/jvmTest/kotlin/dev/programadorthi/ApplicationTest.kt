@@ -1,6 +1,6 @@
 package dev.programadorthi
 
-import dev.programadorthi.plugins.*
+import dev.programadorthi.full.stack.server.app.plugins.*
 import io.ktor.client.request.*
 import io.ktor.client.statement.*
 import io.ktor.http.*

@@ -1,7 +1,7 @@
 val builds = listOf(
     "build-logic",
     "domain-model",
-    "platforms",
+    "server-application",
 )
 
 rootProject.name = "full-stack-kotlin"
@@ -12,7 +12,5 @@ builds.forEach { projectName ->
     includeBuild(projectName)
 
     val includeGradleProperties = File(rootDir, "$projectName/$gradleProperties")
-    if (!includeGradleProperties.exists()) {
-        file(gradleProperties).copyTo(includeGradleProperties)
-    }
+    file(gradleProperties).copyTo(target = includeGradleProperties, overwrite = true)
 }

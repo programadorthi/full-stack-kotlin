@@ -1,4 +1,4 @@
-package dev.programadorthi.plugins
+package dev.programadorthi.full.stack.server.app.plugins
 
 import io.ktor.resources.*
 import io.ktor.server.application.*
@@ -8,7 +8,7 @@ import io.ktor.server.response.*
 import io.ktor.server.routing.*
 import kotlinx.serialization.Serializable
 
-fun Application.configureRouting() {
+internal fun Application.configureRouting() {
     install(Resources)
     routing {
         get("/") {
@@ -23,4 +23,4 @@ fun Application.configureRouting() {
 
 @Serializable
 @Resource("/articles")
-class Articles(val sort: String? = "new")
+internal class Articles(val sort: String? = "new")
