@@ -5,11 +5,13 @@ plugins {
 group = "${group}.app"
 version = "0.0.1"
 
-application {
-    mainClass.set("$group.ApplicationKt")
-}
-
 kotlin {
+    jvm {
+        mainRun {
+            mainClass.set("$group.ApplicationKt")
+        }
+    }
+
     sourceSets {
         jvmMain {
             dependencies {
