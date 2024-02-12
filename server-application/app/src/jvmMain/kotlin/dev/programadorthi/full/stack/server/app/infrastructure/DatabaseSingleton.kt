@@ -27,28 +27,21 @@ internal object DatabaseSingleton {
         val content = resource?.readText() ?: error(">>>> catalog json not found in: $resource")
         val catalogs = JsonParser.format.decodeFromString<List<CatalogSerializable>>(content)
 
-        val deletedCatalogsCount = Catalogs.deleteAll()
-        exposedLogger.debug(">>>> catalogs removed: $deletedCatalogsCount")
+        Catalogs.deleteAll()
+        Brands.deleteAll()
+        Types.deleteAll()
 
-        val deletedBrandsCount = Brands.deleteAll()
-        exposedLogger.debug(">>>> brands removed: $deletedBrandsCount")
-
-        for (catalog in catalogs) {
+        catalogs.map { it.brand }.toSet().forEach { brandName ->
             Brand.new {
-                name = catalog.brand
+                name = brandName
             }
         }
-        exposedLogger.debug(">>>> brands loaded: ${Brand.count()}")
 
-        val deletedTypesCount = Types.deleteAll()
-        exposedLogger.debug(">>>> types removed: $deletedTypesCount")
-
-        for (catalog in catalogs) {
+        catalogs.map { it.type }.toSet().forEach { typeName ->
             Type.new {
-                name = catalog.type
+                name = typeName
             }
         }
-        exposedLogger.debug(">>>> types loaded: ${Type.count()}")
 
         val brandsMap = Brand.all().associateBy { it.name }
         val typesMap = Type.all().associateBy { it.name }
@@ -57,7 +50,7 @@ internal object DatabaseSingleton {
                 name = catalog.name
                 description = catalog.description
                 price = catalog.price
-                pictureFileName = "images/${catalog.id}.webp"
+                pictureFileName = "${catalog.id}.webp"
                 availableStock = 100
                 maxStockThreshold = 200
                 restockThreshold = 10
@@ -66,6 +59,5 @@ internal object DatabaseSingleton {
                 type = typesMap[catalog.type]!!
             }
         }
-        exposedLogger.debug(">>>> catalogs loaded: ${Catalog.count()}")
     }
 }

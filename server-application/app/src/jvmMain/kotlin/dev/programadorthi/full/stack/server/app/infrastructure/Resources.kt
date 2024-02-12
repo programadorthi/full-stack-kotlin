@@ -7,7 +7,7 @@ internal object Resources {
     fun catalogJson(): URL? =
         javaClass.classLoader.getResource("json/catalog.json")
 
-    fun image(name: String): URL? =
-        javaClass.classLoader.getResource(name)
+    fun image(imageName: String): URL? =
+        javaClass.classLoader.getResource("images/$imageName")
 
 }
