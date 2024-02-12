@@ -4,5 +4,6 @@ plugins {
 
 dependencies {
     implementation(kotlin("gradle-plugin", version = libs.versions.kotlin.get()))
-    implementation(project(":serialization"))
+    implementation(kotlin("serialization", version = libs.versions.kotlin.get()))
+    implementation(project(":commons"))
 }

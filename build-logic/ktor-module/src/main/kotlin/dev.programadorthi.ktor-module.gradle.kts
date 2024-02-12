@@ -1,7 +1,6 @@
 plugins {
-    id("dev.programadorthi.commons")
+    id("dev.programadorthi.serialization")
     id("io.ktor.plugin")
-    kotlin("plugin.serialization")
 }
 
 group = "$group.server"

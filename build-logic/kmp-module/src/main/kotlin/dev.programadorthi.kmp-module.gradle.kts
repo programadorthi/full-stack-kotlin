@@ -1,5 +1,5 @@
 plugins {
-    id("dev.programadorthi.commons")
+    id("dev.programadorthi.serialization")
 }
 
 kotlin {

@@ -15,3 +15,4 @@ rootProject.name = "build-logic"
 include("commons")
 include("kmp-module")
 include("ktor-module")
+include("serialization")

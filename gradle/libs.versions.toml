@@ -6,6 +6,7 @@ h2 = "2.2.224"
 kotlin = "1.9.22"
 ktor = "2.3.8"
 logback = "1.4.14"
+serialization = "1.6.2"
 
 [libraries]
 android-gradle-plugin = { module = "com.android.tools.build:gradle", version.ref = "android-gradle-plugin" }
@@ -27,6 +28,8 @@ ktor-server-netty-jvm = { module = "io.ktor:ktor-server-netty-jvm", version.ref 
 ktor-server-resources = { module = "io.ktor:ktor-server-resources", version.ref = "ktor" }
 
 logback-classic = { module = "ch.qos.logback:logback-classic", version.ref = "logback" }
+
+serialization-core = { module = "org.jetbrains.kotlinx:kotlinx-serialization-core", version.ref = "serialization" }
 
 test-unit-ktor-server = { module = "io.ktor:ktor-server-tests-jvm", version.ref = "ktor" }
 
