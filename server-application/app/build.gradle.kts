@@ -3,7 +3,6 @@ plugins {
 }
 
 group = "${group}.app"
-version = "0.0.1"
 
 kotlin {
     jvm {
@@ -15,7 +14,10 @@ kotlin {
     sourceSets {
         jvmMain {
             dependencies {
+                implementation("dev.programadorthi.full.stack.models:models:$version")
+                implementation(libs.bundles.exposed)
                 implementation(libs.bundles.ktor.server)
+                implementation(libs.h2)
                 implementation(libs.logback.classic)
             }
         }

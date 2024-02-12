@@ -1,6 +1,8 @@
 package dev.programadorthi.full.stack.server.app
 
-import dev.programadorthi.full.stack.server.app.plugins.*
+import dev.programadorthi.full.stack.server.app.infrastructure.DatabaseSingleton
+import dev.programadorthi.full.stack.server.app.plugins.configureRouting
+import dev.programadorthi.full.stack.server.app.plugins.configureSerialization
 import io.ktor.server.application.*
 import io.ktor.server.engine.*
 import io.ktor.server.netty.*
@@ -11,6 +13,7 @@ public fun main() {
 }
 
 internal fun Application.module() {
+    DatabaseSingleton.init()
     configureSerialization()
     configureRouting()
 }
