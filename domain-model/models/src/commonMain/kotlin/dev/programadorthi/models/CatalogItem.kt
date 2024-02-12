@@ -3,7 +3,7 @@ package dev.programadorthi.models
 import kotlinx.serialization.Serializable
 
 @Serializable
-public data class CategoryItem(
+public data class CatalogItem(
     val id: Int,
     val name: String,
     val description: String,

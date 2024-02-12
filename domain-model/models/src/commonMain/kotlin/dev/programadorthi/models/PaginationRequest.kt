@@ -5,5 +5,5 @@ import kotlinx.serialization.Serializable
 @Serializable
 public data class PaginationRequest(
     val pageSize: Int = 10,
-    val pageIndex: Int = 0,
+    val pageIndex: Long = 0,
 )

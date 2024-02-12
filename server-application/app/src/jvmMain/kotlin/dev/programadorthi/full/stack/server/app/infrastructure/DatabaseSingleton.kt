@@ -3,9 +3,7 @@ package dev.programadorthi.full.stack.server.app.infrastructure
 import dev.programadorthi.full.stack.server.app.infrastructure.serializable.CatalogSerializable
 import dev.programadorthi.full.stack.server.app.infrastructure.serializable.JsonParser
 import dev.programadorthi.full.stack.server.app.infrastructure.tables.*
-import kotlinx.coroutines.Dispatchers
 import org.jetbrains.exposed.sql.*
-import org.jetbrains.exposed.sql.transactions.experimental.newSuspendedTransaction
 import org.jetbrains.exposed.sql.transactions.transaction
 
 internal object DatabaseSingleton {
@@ -23,9 +21,6 @@ internal object DatabaseSingleton {
             loadFromJson()
         }
     }
-
-    suspend fun <T> dbQuery(block: suspend () -> T): T =
-        newSuspendedTransaction(Dispatchers.IO) { block() }
 
     private fun loadFromJson() {
         val resource = Resources.catalogJson()
