@@ -1,0 +1,127 @@
+@hostname = 0.0.0.0
+@port = 8080
+@host = {{hostname}}:{{port}}
+@baseUrl = http://{{host}}
+@acceptLanguage = pt-BR
+@contentType = application/json
+
+
+# Login request to get token
+# @name login
+# @prompt username 'fullstack' is the valid value
+# @prompt password 'kotlin' is the valid value
+POST {{baseUrl}}/login HTTP/1.1
+Accept-Language: {{acceptLanguage}}
+Content-Type: application/x-www-form-urlencoded
+
+username={{username}}&password={{password}}
+
+
+# The basic token retrived from login call
+@authToken = ZnVsbHN0YWNrOmtvdGxpbg==
+
+# List all saved items
+# @prompt size The amount of items to return
+# @prompt index The pagination index to retrieve the items size
+GET {{baseUrl}}/items HTTP/1.1
+Accept-Language: {{acceptLanguage}}
+Authorization: Basic {{authToken}}
+Content-Type: {{contentType}}
+
+{
+    "pageSize": {{size}},
+    "pageIndex": {{index}}
+}
+
+
+# Get item by id
+# @prompt id The id to fetch
+GET {{baseUrl}}/items/{{id}} HTTP/1.1
+Accept-Language: {{acceptLanguage}}
+Authorization: Basic {{authToken}}
+Content-Type: {{contentType}}
+
+
+# Get items by id array
+# @prompt id1 The id to fetch
+# @prompt id2 The id to fetch
+GET {{baseUrl}}/items/by?id={{id1}}&id={{id2}} HTTP/1.1
+Accept-Language: {{acceptLanguage}}
+Authorization: Basic {{authToken}}
+Content-Type: {{contentType}}
+
+
+# Get item by name starts with
+# @prompt name The value to be used on the starts with query
+# @prompt size The amount of items to return
+# @prompt index The pagination index to retrieve the items size
+GET {{baseUrl}}/items/by/{{name}} HTTP/1.1
+Accept-Language: {{acceptLanguage}}
+Authorization: Basic {{authToken}}
+Content-Type: {{contentType}}
+
+{
+    "pageSize": {{size}},
+    "pageIndex": {{index}}
+}
+
+
+# List all saved brands
+GET {{baseUrl}}/brands HTTP/1.1
+Accept-Language: {{acceptLanguage}}
+Authorization: Basic {{authToken}}
+Content-Type: {{contentType}}
+
+
+# List all saved types
+GET {{baseUrl}}/types HTTP/1.1
+Accept-Language: {{acceptLanguage}}
+Authorization: Basic {{authToken}}
+Content-Type: {{contentType}}
+
+
+# List all items by a brand id
+# @prompt brandId The brand id to look for items
+# @prompt size The amount of items to return
+# @prompt index The pagination index to retrieve the items size
+GET {{baseUrl}}/items/by/brand/{{brandId}} HTTP/1.1
+Accept-Language: {{acceptLanguage}}
+Authorization: Basic {{authToken}}
+Content-Type: {{contentType}}
+
+{
+    "pageSize": {{size}},
+    "pageIndex": {{index}}
+}
+
+
+# List all items by a type id
+# @prompt typeId The type id to look for items
+# @prompt size The amount of items to return
+# @prompt index The pagination index to retrieve the items size
+GET {{baseUrl}}/items/by/type/{{typeId}} HTTP/1.1
+Accept-Language: {{acceptLanguage}}
+Authorization: Basic {{authToken}}
+Content-Type: {{contentType}}
+
+{
+    "pageSize": {{size}},
+    "pageIndex": {{index}}
+}
+
+
+# List all items by a type id and brand id
+# @prompt brandId The brand id to look for items
+# @prompt typeId The type id to look for items
+# @prompt size The amount of items to return
+# @prompt index The pagination index to retrieve the items size
+GET {{baseUrl}}/items/type/{{typeId}}/brand/{{brandId}} HTTP/1.1
+Accept-Language: {{acceptLanguage}}
+Authorization: Basic {{authToken}}
+Content-Type: {{contentType}}
+
+{
+    "pageSize": {{size}},
+    "pageIndex": {{index}}
+}
+
