@@ -2,7 +2,9 @@ package dev.programadorthi.full.stack.server.app.infrastructure.facade
 
 import dev.programadorthi.full.stack.server.app.infrastructure.dbQuery
 import dev.programadorthi.full.stack.server.app.infrastructure.tables.Type
+import dev.programadorthi.full.stack.server.app.infrastructure.tables.Types
 import dev.programadorthi.models.CatalogType
+import org.jetbrains.exposed.sql.SortOrder
 
 internal interface TypeFacade {
     suspend fun types(): List<CatalogType>
@@ -11,7 +13,9 @@ internal interface TypeFacade {
 internal class TypeFacadeImpl : TypeFacade {
 
     override suspend fun types(): List<CatalogType> = dbQuery {
-        Type.all().map(::mapped)
+        Type.all()
+            .orderBy(Types.name to SortOrder.ASC)
+            .map(::mapped)
     }
 
     internal companion object {
