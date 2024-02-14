@@ -1,3 +1,10 @@
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+    }
+    includeBuild("../build-logic")
+}
+
 dependencyResolutionManagement {
     repositories {
         mavenCentral()
@@ -10,8 +17,9 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "server-application"
-
+includeBuild("../platforms")
 includeBuild("../domain-model")
+
+rootProject.name = "server-application"
 
 include("app")

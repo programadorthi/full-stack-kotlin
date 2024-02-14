@@ -1,5 +1,5 @@
 plugins {
-    id("dev.programadorthi.serialization")
+    id("dev.programadorthi.serialization-module")
     id("io.ktor.plugin")
 }
 

@@ -3,5 +3,6 @@ plugins {
 }
 
 dependencies {
-    implementation(kotlin("gradle-plugin", version = libs.versions.kotlin.get()))
+    implementation(platform("dev.programadorthi.platform:plugins-platform"))
+    implementation(kotlin("gradle-plugin"))
 }

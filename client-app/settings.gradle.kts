@@ -1,6 +1,7 @@
 pluginManagement {
     repositories {
         gradlePluginPortal()
+        google()
     }
     includeBuild("../build-logic")
 }
@@ -19,6 +20,6 @@ dependencyResolutionManagement {
 
 includeBuild("../platforms")
 
-rootProject.name = "domain-model"
+rootProject.name = "client-app"
 
-include("models")
+include(":composeApp")

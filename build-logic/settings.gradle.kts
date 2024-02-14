@@ -1,6 +1,7 @@
 dependencyResolutionManagement {
     repositories {
         gradlePluginPortal()
+        google()
     }
 
     versionCatalogs {
@@ -10,9 +11,13 @@ dependencyResolutionManagement {
     }
 }
 
+includeBuild("../platforms")
+
 rootProject.name = "build-logic"
 
 include("commons")
+include("compose-module")
 include("kmp-module")
 include("ktor-module")
-include("serialization")
+include("multiplatform-module")
+include("serialization-module")

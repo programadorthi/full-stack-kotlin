@@ -5,5 +5,6 @@ plugins {
 dependencies {
     implementation(platform("dev.programadorthi.platform:plugins-platform"))
     implementation(kotlin("gradle-plugin"))
-    implementation(project(":serialization-module"))
+    implementation(kotlin("serialization"))
+    implementation(project(":commons"))
 }

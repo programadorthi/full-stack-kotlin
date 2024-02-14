@@ -1,5 +1,7 @@
 val builds = listOf(
+    "platforms",
     "build-logic",
+    "client-app",
     "domain-model",
     "server-application",
 )

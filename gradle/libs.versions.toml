@@ -1,5 +1,10 @@
 [versions]
 android-gradle-plugin = "8.2.2"
+android-compile-sdk = "34"
+android-min-sdk = "24"
+androidx-activity-compose = "1.8.2"
+compose = "1.6.1"
+compose-gradle-plugin = "1.6.0-beta02"
 coroutines = "1.7.3"
 exposed = "0.47.0"
 h2 = "2.2.224"
@@ -10,6 +15,12 @@ serialization = "1.6.2"
 
 [libraries]
 android-gradle-plugin = { module = "com.android.tools.build:gradle", version.ref = "android-gradle-plugin" }
+compose-gradle-plugin = { module = "org.jetbrains.compose:compose-gradle-plugin", version.ref = "compose-gradle-plugin" }
+
+androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "androidx-activity-compose" }
+
+compose-ui-tooling = { module = "androidx.compose.ui:ui-tooling", version.ref = "compose" }
+compose-ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview", version.ref = "compose" }
 
 coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "coroutines" }
 
@@ -40,4 +51,4 @@ exposed = ["exposed-core", "exposed-dao", "exposed-jdbc", "exposed-json"]
 ktor-server = ["ktor-serialization-kotlinx-json-jvm", "ktor-server-content-negotiation-jvm", "ktor-server-core-jvm", "ktor-server-netty-jvm", "ktor-server-auto-head-response", "ktor-server-partial-content", "ktor-server-auth-jvm"]
 
 [plugins]
-#versions = { id = "com.github.ben-manes.versions", version = "0.45.0" }
+#android-application = { id = "com.android.application", version.ref = "android-gradle-plugin" }

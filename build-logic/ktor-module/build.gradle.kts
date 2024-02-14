@@ -3,8 +3,9 @@ plugins {
 }
 
 dependencies {
-    implementation(kotlin("gradle-plugin", version = libs.versions.kotlin.get()))
-    implementation(libs.ktor.plugin)
+    implementation(platform("dev.programadorthi.platform:plugins-platform"))
+    implementation(kotlin("gradle-plugin"))
+    implementation("io.ktor.plugin:plugin")
     implementation(project(":commons"))
-    implementation(project(":serialization"))
+    implementation(project(":serialization-module"))
 }
