@@ -1,3 +1,7 @@
+import org.jetbrains.compose.ExperimentalComposeLibrary
+import org.jetbrains.compose.desktop.application.dsl.TargetFormat
+import org.jetbrains.kotlin.gradle.targets.js.dsl.ExperimentalWasmDsl
+
 plugins {
     id("com.android.application")
     id("dev.programadorthi.compose-module")
@@ -6,6 +10,17 @@ plugins {
 val catalog = versionCatalogs.named("libs")
 
 kotlin {
+    @OptIn(ExperimentalWasmDsl::class)
+    wasmJs {
+        moduleName = project.name
+        browser {
+            commonWebpackConfig {
+                outputFileName = "${project.name}.js"
+            }
+        }
+        binaries.executable()
+    }
+
     androidTarget {
         compilations.all {
             kotlinOptions {
@@ -14,21 +29,38 @@ kotlin {
         }
     }
 
+    jvm("desktop")
+
     listOf(
         iosX64(),
         iosArm64(),
         iosSimulatorArm64()
     ).forEach { iosTarget ->
         iosTarget.binaries.framework {
-            baseName = "${project.name}Shared"
+            baseName = project.name
             isStatic = true
         }
     }
 
     sourceSets {
+        val desktopMain by getting
+
         androidMain.dependencies {
             implementation(catalog.findLibrary("compose-ui-tooling-preview").get())
             implementation(catalog.findLibrary("androidx-activity-compose").get())
+        }
+
+        commonMain.dependencies {
+            implementation(compose.runtime)
+            implementation(compose.foundation)
+            implementation(compose.material)
+            implementation(compose.ui)
+            @OptIn(ExperimentalComposeLibrary::class)
+            implementation(compose.components.resources)
+        }
+
+        desktopMain.dependencies {
+            implementation(compose.desktop.currentOs)
         }
     }
 }
@@ -47,7 +79,7 @@ android {
         minSdk = catalog.findVersion("android-min-sdk").get().toString().toInt()
         targetSdk = csdk
         versionCode = 1
-        versionName = "0.0.1"
+        versionName = project.version.toString()
     }
 
     packaging {
@@ -70,4 +102,18 @@ android {
     dependencies {
         debugImplementation(catalog.findLibrary("compose-ui-tooling").get())
     }
+}
+
+compose.desktop {
+    application {
+        nativeDistributions {
+            targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)
+            packageName = project.group.toString()
+            packageVersion = project.version.toString()
+        }
+    }
+}
+
+compose.experimental {
+    web.application {}
 }

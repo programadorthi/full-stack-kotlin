@@ -12,7 +12,10 @@ kotlin {
                 jvmTarget = JavaVersion.VERSION_11.toString()
             }
         }
+        publishLibraryVariants("release")
     }
+
+    jvm()
 
     listOf(
         iosX64(),

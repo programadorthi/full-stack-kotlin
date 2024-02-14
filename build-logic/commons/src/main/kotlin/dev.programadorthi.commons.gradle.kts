@@ -7,7 +7,7 @@ plugins {
 }
 
 group = "dev.programadorthi.full.stack"
-version = "0.0.1"
+version = "1.0.0"
 
 val versionCatalogs: VersionCatalogsExtension by extensions
 
