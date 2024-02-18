@@ -21,4 +21,5 @@ includeBuild("../platforms")
 
 rootProject.name = "domain-model"
 
+include("interactors")
 include("models")

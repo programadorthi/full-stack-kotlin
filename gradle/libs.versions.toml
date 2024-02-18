@@ -5,12 +5,13 @@ android-min-sdk = "24"
 androidx-activity-compose = "1.8.2"
 compose = "1.6.1"
 compose-gradle-plugin = "1.6.0-beta02"
-coroutines = "1.7.3"
+coroutines = "1.8.0"
 exposed = "0.47.0"
 h2 = "2.2.224"
 kotlin = "1.9.22"
 ktor = "2.3.8"
 logback = "1.4.14"
+programadorthi-state = "0.0.1"
 serialization = "1.6.2"
 
 [libraries]
@@ -41,6 +42,9 @@ ktor-server-auto-head-response = { module = "io.ktor:ktor-server-auto-head-respo
 ktor-server-partial-content = { module = "io.ktor:ktor-server-partial-content", version.ref = "ktor" }
 
 logback-classic = { module = "ch.qos.logback:logback-classic", version.ref = "logback" }
+
+programadorthi-state-core = { module = "dev.programadorthi.state:core", version.ref = "programadorthi-state" }
+programadorthi-state-validators = { module = "dev.programadorthi.state:validators", version.ref = "programadorthi-state" }
 
 serialization-core = { module = "org.jetbrains.kotlinx:kotlinx-serialization-core", version.ref = "serialization" }
 

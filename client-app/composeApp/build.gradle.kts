@@ -4,6 +4,18 @@ plugins {
 
 val computedPackage = "${group}.compose.app"
 
+kotlin {
+    sourceSets {
+        commonMain {
+            dependencies {
+                implementation("dev.programadorthi.full.stack.domain:interactors:$version")
+                implementation("dev.programadorthi.full.stack.domain:models:$version")
+                implementation(libs.programadorthi.state.core)
+            }
+        }
+    }
+}
+
 android {
     namespace = computedPackage
 
