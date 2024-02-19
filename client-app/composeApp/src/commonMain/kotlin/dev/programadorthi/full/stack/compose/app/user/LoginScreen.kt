@@ -9,20 +9,20 @@ import androidx.compose.material.Button
 import androidx.compose.material.Text
 import androidx.compose.material.TextField
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import dev.programadorthi.state.compose.asState
 
 @Composable
 internal fun LoginScreen() {
     val viewModel = remember { LoginViewModel() }
-    val (username, setUsername) = remember { viewModel.username }
-    val (password, setPassword) = remember { viewModel.password }
-    val usernameMessages by remember { viewModel.usernameMessages }
-    val passwordMessages by remember { viewModel.passwordMessages }
+    val (username, setUsername) = remember { viewModel.username.asState() }
+    val (password, setPassword) = remember { viewModel.password.asState() }
+    val (usernameValid, usernameMessages) = remember { viewModel.usernameValidation }
+    val (passwordValid, passwordMessages) = remember { viewModel.passwordValidation }
 
     Column(
         Modifier.fillMaxWidth(),
@@ -38,7 +38,7 @@ internal fun LoginScreen() {
                 Text("Username:")
             },
         )
-        if (usernameMessages.isNotEmpty()) {
+        if (usernameValid.not()) {
             Text(usernameMessages.first(), color = Color.Red)
         }
         Spacer(modifier = Modifier.height(20.dp))
@@ -49,7 +49,7 @@ internal fun LoginScreen() {
                 Text("Password:")
             },
         )
-        if (passwordMessages.isNotEmpty()) {
+        if (passwordValid.not()) {
             Text(passwordMessages.first(), color = Color.Red)
         }
         Spacer(modifier = Modifier.height(20.dp))

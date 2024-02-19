@@ -10,7 +10,7 @@ kotlin {
             dependencies {
                 implementation("dev.programadorthi.full.stack.domain:interactors:$version")
                 implementation("dev.programadorthi.full.stack.domain:models:$version")
-                implementation(libs.programadorthi.state.core)
+                implementation(libs.programadorthi.state.compose)
             }
         }
     }

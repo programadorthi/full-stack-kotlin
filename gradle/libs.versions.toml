@@ -43,6 +43,7 @@ ktor-server-partial-content = { module = "io.ktor:ktor-server-partial-content", 
 
 logback-classic = { module = "ch.qos.logback:logback-classic", version.ref = "logback" }
 
+programadorthi-state-compose = { module = "dev.programadorthi.state:compose", version.ref = "programadorthi-state" }
 programadorthi-state-core = { module = "dev.programadorthi.state:core", version.ref = "programadorthi-state" }
 programadorthi-state-validators = { module = "dev.programadorthi.state:validators", version.ref = "programadorthi-state" }
 

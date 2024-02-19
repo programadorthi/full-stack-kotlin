@@ -4,7 +4,6 @@ import dev.programadorthi.models.user.BasicToken
 import dev.programadorthi.models.user.Login
 import dev.programadorthi.state.core.BaseValueManager
 import dev.programadorthi.state.core.extension.basicValueManager
-import dev.programadorthi.state.core.extension.messages
 import dev.programadorthi.state.core.extension.plusAssign
 import dev.programadorthi.state.validator.string.HasSizeValidator
 import dev.programadorthi.state.validator.string.IsEqualToValidator
@@ -37,7 +36,7 @@ public class LoginInteractor(
 
     public fun login(): Result<BasicToken> = runCatching {
         check(username.validate() && password.validate()) {
-            username.messages().firstOrNull() ?: password.messages().first()
+            username.messages.firstOrNull() ?: password.messages.first()
         }
         val login = Login(username = username.value, password = password.value)
         repository.doLogin(login)

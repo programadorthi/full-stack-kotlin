@@ -1,10 +1,11 @@
 package dev.programadorthi.full.stack.compose.app.user
 
-import androidx.compose.runtime.State
 import dev.programadorthi.full.stack.interactors.user.LoginInteractor
 import dev.programadorthi.full.stack.interactors.user.LoginRepository
 import dev.programadorthi.models.user.BasicToken
 import dev.programadorthi.models.user.Login
+import dev.programadorthi.state.compose.ValidatorManagerState
+import dev.programadorthi.state.compose.asValidatorState
 import dev.programadorthi.state.core.BaseValueManager
 
 internal class LoginViewModel {
@@ -18,9 +19,9 @@ internal class LoginViewModel {
 
     val password: BaseValueManager<String> = interactor.password
 
-    val usernameMessages: State<List<String>> = username.messages
+    val usernameValidation: ValidatorManagerState = username.asValidatorState()
 
-    val passwordMessages: State<List<String>> = password.messages
+    val passwordValidation: ValidatorManagerState = password.asValidatorState()
 
     fun login() {
         interactor.login()
