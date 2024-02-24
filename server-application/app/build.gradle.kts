@@ -17,7 +17,6 @@ kotlin {
                 implementation("dev.programadorthi.full.stack.domain:models:$version")
                 implementation("dev.programadorthi.full.stack.domain:interactors:$version")
                 implementation(libs.programadorthi.state.core)
-                implementation(compose.runtime)
                 implementation(libs.bundles.exposed)
                 implementation(libs.bundles.ktor.server)
                 implementation(libs.h2)

@@ -7,6 +7,6 @@ dependencies {
     implementation(kotlin("gradle-plugin"))
     implementation("io.ktor.plugin:plugin")
     implementation(project(":commons"))
-    implementation(project(":compose-module"))
+    implementation(project(":kmp-module"))
     implementation(project(":serialization-module"))
 }

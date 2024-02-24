@@ -1,6 +1,5 @@
 plugins {
-    id("dev.programadorthi.compose-module")
-    id("dev.programadorthi.serialization-module")
+    id("dev.programadorthi.kmp-module")
     id("io.ktor.plugin")
 }
 

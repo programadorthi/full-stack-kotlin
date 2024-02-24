@@ -24,9 +24,9 @@ public class LoginInteractor(
 
         password += IsNotBlankValidator(message = { "Password is required" })
         password += HasSizeValidator(
-            minSize = 5,
-            maxSize = 5,
-            message = { "Password length must be equals to 5" }
+            minSize = 6,
+            maxSize = 6,
+            message = { "Password length must be equals to 6" }
         )
         password += IsEqualToValidator(
             other = "kotlin",
