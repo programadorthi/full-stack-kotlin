@@ -4,8 +4,6 @@ import dev.programadorthi.full.stack.interactors.user.LoginInteractor
 import dev.programadorthi.full.stack.interactors.user.LoginRepository
 import dev.programadorthi.models.user.BasicToken
 import dev.programadorthi.models.user.Login
-import dev.programadorthi.state.compose.ValidatorManagerState
-import dev.programadorthi.state.compose.asValidatorState
 import dev.programadorthi.state.core.BaseValueManager
 
 internal class LoginViewModel {
@@ -18,10 +16,6 @@ internal class LoginViewModel {
     val username: BaseValueManager<String> = interactor.username
 
     val password: BaseValueManager<String> = interactor.password
-
-    val usernameValidation: ValidatorManagerState = username.asValidatorState()
-
-    val passwordValidation: ValidatorManagerState = password.asValidatorState()
 
     fun login() {
         interactor.login()

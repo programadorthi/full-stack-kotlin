@@ -14,15 +14,16 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import dev.programadorthi.state.compose.asState
+import dev.programadorthi.state.compose.rememberSaveableValidatorState
+import dev.programadorthi.state.compose.rememberSaveableValueManagerAsState
 
 @Composable
 internal fun LoginScreen() {
     val viewModel = remember { LoginViewModel() }
-    val (username, setUsername) = remember { viewModel.username.asState() }
-    val (password, setPassword) = remember { viewModel.password.asState() }
-    val (usernameValid, usernameMessages) = remember { viewModel.usernameValidation }
-    val (passwordValid, passwordMessages) = remember { viewModel.passwordValidation }
+    val (username, setUsername) = rememberSaveableValueManagerAsState { viewModel.username }
+    val (password, setPassword) = rememberSaveableValueManagerAsState { viewModel.password }
+    val (usernameValid, usernameMessages) = rememberSaveableValidatorState { viewModel.username }
+    val (passwordValid, passwordMessages) = rememberSaveableValidatorState { viewModel.password }
 
     Column(
         Modifier.fillMaxWidth(),
