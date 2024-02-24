@@ -1,4 +1,4 @@
-package dev.programadorthi.models
+package dev.programadorthi.models.serialization
 
 import kotlinx.serialization.json.Json
 

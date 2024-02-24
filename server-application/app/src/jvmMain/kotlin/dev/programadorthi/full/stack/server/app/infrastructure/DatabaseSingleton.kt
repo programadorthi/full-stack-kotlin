@@ -1,7 +1,7 @@
 package dev.programadorthi.full.stack.server.app.infrastructure
 
 import dev.programadorthi.full.stack.server.app.infrastructure.serializable.CatalogSerializable
-import dev.programadorthi.models.JsonParser
+import dev.programadorthi.models.serialization.JsonParser
 import dev.programadorthi.full.stack.server.app.infrastructure.tables.*
 import org.jetbrains.exposed.sql.*
 import org.jetbrains.exposed.sql.transactions.transaction

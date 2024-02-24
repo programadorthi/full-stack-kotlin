@@ -1,5 +1,6 @@
 package dev.programadorthi.full.stack.interactors.user
 
+import dev.programadorthi.full.stack.interactors.business.checkBusiness
 import dev.programadorthi.models.user.BasicToken
 import dev.programadorthi.models.user.Login
 import dev.programadorthi.state.core.BaseValueManager
@@ -35,9 +36,7 @@ public class LoginInteractor(
     }
 
     public suspend fun login(): Result<BasicToken> = runCatching {
-        check(username.validate() && password.validate()) {
-            username.messages.firstOrNull() ?: password.messages.first()
-        }
+        checkBusiness(username, password)
         val login = Login(username = username.value, password = password.value)
         repository.doLogin(login)
     }

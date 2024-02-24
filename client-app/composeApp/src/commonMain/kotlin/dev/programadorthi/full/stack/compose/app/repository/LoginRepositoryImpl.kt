@@ -1,7 +1,7 @@
 package dev.programadorthi.full.stack.compose.app.repository
 
 import dev.programadorthi.full.stack.interactors.user.LoginRepository
-import dev.programadorthi.models.JsonParser
+import dev.programadorthi.models.serialization.JsonParser
 import dev.programadorthi.models.user.BasicToken
 import dev.programadorthi.models.user.Login
 import io.ktor.client.HttpClient
