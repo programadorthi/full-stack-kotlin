@@ -1,6 +1,5 @@
 import org.jetbrains.compose.ExperimentalComposeLibrary
 import org.jetbrains.compose.desktop.application.dsl.TargetFormat
-import org.jetbrains.kotlin.gradle.targets.js.dsl.ExperimentalWasmDsl
 
 plugins {
     id("com.android.application")
@@ -10,17 +9,6 @@ plugins {
 val catalog = versionCatalogs.named("libs")
 
 kotlin {
-    @OptIn(ExperimentalWasmDsl::class)
-    wasmJs {
-        moduleName = project.name
-        browser {
-            commonWebpackConfig {
-                outputFileName = "${project.name}.js"
-            }
-        }
-        binaries.executable()
-    }
-
     androidTarget {
         compilations.all {
             kotlinOptions {
@@ -30,6 +18,12 @@ kotlin {
     }
 
     jvm("desktop")
+
+    js(IR) {
+        browser()
+        nodejs()
+        binaries.executable()
+    }
 
     listOf(
         iosX64(),

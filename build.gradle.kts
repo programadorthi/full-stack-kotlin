@@ -5,7 +5,7 @@ tasks.register("run") {
     // ANDROID
     //dependsOn(gradle.includedBuild("client-app").task(":composeApp:installDebug"))
     // WEB
-    //dependsOn(gradle.includedBuild("client-app").task(":composeApp:wasmJsBrowserDevelopmentRun"))
+    //dependsOn(gradle.includedBuild("client-app").task(":composeApp:jsBrowserDevelopmentRun"))
     // DESKTOP
     dependsOn(gradle.includedBuild("client-app").task(":composeApp:run"))
 }
