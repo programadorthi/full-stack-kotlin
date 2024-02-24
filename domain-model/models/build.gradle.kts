@@ -3,3 +3,13 @@ plugins {
 }
 
 group = "${group}.domain"
+
+kotlin {
+    sourceSets {
+        commonMain {
+            dependencies {
+                implementation(libs.serialization.json)
+            }
+        }
+    }
+}

@@ -1,7 +1,7 @@
 package dev.programadorthi.full.stack.server.app.infrastructure
 
 import dev.programadorthi.full.stack.server.app.infrastructure.serializable.CatalogSerializable
-import dev.programadorthi.full.stack.server.app.infrastructure.serializable.JsonParser
+import dev.programadorthi.models.JsonParser
 import dev.programadorthi.full.stack.server.app.infrastructure.tables.*
 import org.jetbrains.exposed.sql.*
 import org.jetbrains.exposed.sql.transactions.transaction
@@ -25,7 +25,7 @@ internal object DatabaseSingleton {
     private fun loadFromJson() {
         val resource = Resources.catalogJson()
         val content = resource?.readText() ?: error(">>>> catalog json not found in: $resource")
-        val catalogs = JsonParser.format.decodeFromString<List<CatalogSerializable>>(content)
+        val catalogs = JsonParser.instance.decodeFromString<List<CatalogSerializable>>(content)
 
         Catalogs.deleteAll()
         Brands.deleteAll()

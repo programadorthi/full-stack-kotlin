@@ -10,6 +10,7 @@ import androidx.compose.material.Text
 import androidx.compose.material.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -19,7 +20,8 @@ import dev.programadorthi.state.compose.rememberSaveableValueManagerAsState
 
 @Composable
 internal fun LoginScreen() {
-    val viewModel = remember { LoginViewModel() }
+    val scope = rememberCoroutineScope()
+    val viewModel = remember(scope) { LoginViewModel(scope) }
     val (username, setUsername) = rememberSaveableValueManagerAsState { viewModel.username }
     val (password, setPassword) = rememberSaveableValueManagerAsState { viewModel.password }
     val (usernameValid, usernameMessages) = rememberSaveableValidatorState { viewModel.username }

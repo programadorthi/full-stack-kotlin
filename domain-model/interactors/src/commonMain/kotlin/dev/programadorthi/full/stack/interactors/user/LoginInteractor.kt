@@ -34,7 +34,7 @@ public class LoginInteractor(
         )
     }
 
-    public fun login(): Result<BasicToken> = runCatching {
+    public suspend fun login(): Result<BasicToken> = runCatching {
         check(username.validate() && password.validate()) {
             username.messages.firstOrNull() ?: password.messages.first()
         }

@@ -10,7 +10,10 @@ kotlin {
             dependencies {
                 implementation("dev.programadorthi.full.stack.domain:interactors:$version")
                 implementation("dev.programadorthi.full.stack.domain:models:$version")
+                implementation(libs.ktor.client.content.negotiation)
                 implementation(libs.ktor.client.core)
+                implementation(libs.ktor.client.logging)
+                implementation(libs.ktor.serialization.kotlinx.json)
                 implementation(libs.programadorthi.state.compose)
             }
         }

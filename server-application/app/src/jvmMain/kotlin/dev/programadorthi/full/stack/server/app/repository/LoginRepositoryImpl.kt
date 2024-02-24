@@ -9,7 +9,7 @@ import io.ktor.util.encodeBase64
 
 internal class LoginRepositoryImpl : LoginRepository {
 
-    override fun doLogin(login: Login): BasicToken {
+    override suspend fun doLogin(login: Login): BasicToken {
         val credential = UserPasswordCredential(
             name = login.username,
             password = login.password

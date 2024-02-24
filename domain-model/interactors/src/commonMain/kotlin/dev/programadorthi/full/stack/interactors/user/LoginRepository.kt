@@ -4,5 +4,5 @@ import dev.programadorthi.models.user.BasicToken
 import dev.programadorthi.models.user.Login
 
 public interface LoginRepository {
-    public fun doLogin(login: Login): BasicToken
+    public suspend fun doLogin(login: Login): BasicToken
 }
